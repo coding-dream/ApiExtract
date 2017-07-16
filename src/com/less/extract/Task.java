@@ -1,18 +1,14 @@
 package com.less.extract;
 
-public abstract class Task {
-	void execute(){
-		StepOne();
-		StepTwo();
-		StepTree();
-		StepFour();
-		StepFive();
-	}
+import okhttp3.Request;
 
-	abstract void StepOne();
-	abstract void StepTwo();
-	abstract void StepTree();
-	abstract void StepFour();
-	abstract void StepFive();
+public abstract class Task {
+	abstract void execute();
+	
+	abstract void StepOne(Request request);
+	abstract void StepTwo(Request request);
+	abstract void StepTree(Request request);
+	abstract void StepFour(Request request);
+	abstract void StepFive(Request request);
 	
 }
