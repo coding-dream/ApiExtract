@@ -6,10 +6,9 @@ import java.util.Map;
 
 import com.less.extract.HttpSend.Resback;
 
-import okhttp3.Request;
 import okhttp3.Response;
 
-public class ZhihuTask extends Task {
+public class ZhihuTask extends Task<String> {
 	
 	@Override
 	void execute() {
@@ -21,38 +20,39 @@ public class ZhihuTask extends Task {
 			@Override
 			public void done(Response t, Exception e) {
 				try {
-					System.out.println(t.body().string());
+					StepOne(t.body().string());
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 		});
 	}
-
+	
 	@Override
-	void StepOne(Request request) {
+	void StepOne(String param) {
 		
 	}
 
+
 	@Override
-	void StepTwo(Request request) {
+	void StepTwo(String param) {
 		
 	}
 
+
 	@Override
-	void StepTree(Request request) {
+	void StepTree(String param) {
 		
 	}
 
-	@Override
-	void StepFour(Request request) {
-		
-	}
 
 	@Override
-	void StepFive(Request request) {
+	void StepFour(String param) {
 		
 	}
 	
-
+	public static void main(String[] args) {
+		Task task = TaskFactory.create(ZhihuTask.class);
+		new WorkDispatcher().dipatch(task);
+	}
 }

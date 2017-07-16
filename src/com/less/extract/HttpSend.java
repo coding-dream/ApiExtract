@@ -37,8 +37,10 @@ public class HttpSend {
 	}
 
 	public static void request(String url,Map<String,String>params,Resback resback){
-		Request.Builder build= createDefault().newBuilder();
-		build.url(url);
+		Request.Builder build = new Request.Builder()
+				.url(url)
+				.addHeader(KEY.User_Agent.vV(), defaultHeader(KEY.User_Agent.vV()))
+				.addHeader(KEY.Accept.vV(), defaultHeader(KEY.Accept.vV()));
 		
 		for(String key : params.keySet()){
 			build.addHeader(key, params.get(key));
@@ -52,6 +54,7 @@ public class HttpSend {
 			
 			@Override
 			public void onFailure(Call call, IOException ex) {
+				System.out.println(ex.getMessage());
 				resback.done(null, ex);
 			}
 		});
@@ -65,12 +68,4 @@ public class HttpSend {
 		return hashMap.get(key);
 	}
 	
-	private static Request createDefault(){
-		Request request = new Request.Builder()
-				.url("http://xx.com") // 如果没有设置 build.newBuild();会报错
-				.addHeader(KEY.User_Agent.vV(), defaultHeader(KEY.User_Agent.vV()))
-				.addHeader(KEY.Accept.vV(), defaultHeader(KEY.Accept.vV()))
-				.build();
-		return request;
-	}
 }
