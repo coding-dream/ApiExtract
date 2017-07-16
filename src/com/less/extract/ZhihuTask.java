@@ -1,23 +1,30 @@
 package com.less.extract;
 
-import java.util.ArrayDeque;
-
-public class ZhihuTask implements Task {
-	private ArrayDeque<Step> mTasks = new ArrayDeque<Step>();
+public class ZhihuTask extends Task {
 	
 	@Override
-	public void execute(Runnable runnable) {
+	void StepOne() {
 		
 	}
-	
-	public static Task create() {
-		return new ZhihuTask();
+
+	@Override
+	void StepTwo() {
+		
 	}
 
 	@Override
-	public Task add(Step step) {
-		mTasks.add(step);
-		return this;
+	void StepTree() {
+		
 	}
-	
+
+	@Override
+	void StepFour() {
+		
+	}
+
+	@Override
+	void StepFive() {
+		
+	}
+
 }
