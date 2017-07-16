@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Headers {
 	private static HashMap<String, String> hashMap = new HashMap<>();
 	private static final String COOKIE = "";
-	private static final String REFERER = "http://www.jj3jj.com/";
+	private static final String REFERER = "http://www.x.com/";
 	
 	public static enum KEY{
 		Cookie("Cookie"),
