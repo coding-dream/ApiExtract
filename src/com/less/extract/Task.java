@@ -1,6 +1,7 @@
 package com.less.extract;
 
 public abstract class Task <T>{
+	
 	abstract void execute();
 	
 	abstract void StepOne(T param);
