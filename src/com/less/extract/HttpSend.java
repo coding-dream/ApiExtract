@@ -56,7 +56,7 @@ public class HttpSend {
 		
 	}
 
-	public static void request(String url,Map<String,String>params,Resback resback){
+	public static void request(String url,Map<String,String>params,Resback<Response> resback){
 		Request.Builder build = new Request.Builder()
 				.url(url)
 				.addHeader(KEY.User_Agent.vV(), defaultHeader(KEY.User_Agent.vV()))
@@ -64,9 +64,10 @@ public class HttpSend {
 				.addHeader(KEY.Accept_Language.vV(), defaultHeader(KEY.Accept_Language.vV()))
 				.addHeader(KEY.Connection.vV(), defaultHeader(KEY.Connection.vV()))
 				.addHeader(KEY.Cache_Control.vV(), defaultHeader(KEY.Cache_Control.vV()));
-		
-		for(String key : params.keySet()){
-			build.addHeader(key, params.get(key));
+		if(params != null){
+			for(String key : params.keySet()){
+				build.addHeader(key, params.get(key));
+			}
 		}
 		okhttp.newCall(build.build()).enqueue(new Callback() {
 			
@@ -83,8 +84,8 @@ public class HttpSend {
 		});
 	}
 	
-	public interface Resback<T>{
-		void done(T t,Exception e);
+	public interface Resback<Response>{
+		void done(Response response,Exception e);
 	}
 
 	private static String defaultHeader(String key){
