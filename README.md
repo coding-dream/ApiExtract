@@ -1,3 +1,3 @@
 # ApiExtract
-not complete
-抽取网站接口简单工具类
+抽取网站接口简单工具类(仅做个人测试)
+
